@@ -27,13 +27,13 @@ const PORT = process.env.PORT || 3000;
 
 
 // api's
-app.get('api/test',(req, res)=>{
-    console.log("test called");
-    return res.status(200).json({
-        message: `Backend working`,
-        success: true
+    app.get('/api/test',(req, res)=>{
+        console.log("test called");
+        return res.status(200).json({
+            message: `Backend working`,
+            success: true
+        })
     })
-})
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
