@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 3000;
 
 
 // api's
-app.get('/test',(req, res)=>{
+app.get('api/test',(req, res)=>{
     return res.status(200).json({
         message: `Backend working`,
         success: true
