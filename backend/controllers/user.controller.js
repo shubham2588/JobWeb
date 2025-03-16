@@ -5,6 +5,8 @@ import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
+    console.log(req.body); // Debugging: Check if request body is received
+
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
          
