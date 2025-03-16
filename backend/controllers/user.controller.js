@@ -5,7 +5,7 @@ import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
-    console.log(req.body); // Debugging: Check if request body is received
+    console.log("req11",req.body); // Debugging: Check if request body is received
 
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
@@ -17,10 +17,14 @@ export const register = async (req, res) => {
             });
         };
         const file = req.file;
+        console.log('file: ', file);
         const fileUri = getDataUri(file);
+        console.log('fileUri: ', fileUri);
         const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+        console.log('cloudResponse: ', cloudResponse);
 
         const user = await User.findOne({ email });
+        console.log('user: ', user);
         if (user) {
             return res.status(400).json({
                 message: 'User already exist with this email.',
@@ -45,7 +49,7 @@ export const register = async (req, res) => {
             success: true
         });
     } catch (error) {
-        console.log(error);
+        console.log("err1",error);
     }
 }
 export const login = async (req, res) => {
