@@ -1,3 +1,4 @@
+import { PAYMENT_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
 import React from "react";
 
@@ -35,7 +36,7 @@ const handlePayment = async (duration, pkg) => {
   console.log("duration: ", duration);
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/v1/payment/create-subscription",
+      `${PAYMENT_API_END_POINT}/create-subscription`,
       {
         plan_name: pkg,
         duration: duration,
@@ -45,8 +46,8 @@ const handlePayment = async (duration, pkg) => {
         withCredentials: true,
       }
     );
-    if(response.data){
-      window.location.href = response.data?.session?.url
+    if (response.data) {
+      window.location.href = response.data?.session?.url;
     }
     console.log(response.data);
   } catch (error) {

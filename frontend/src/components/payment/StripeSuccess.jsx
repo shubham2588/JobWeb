@@ -1,5 +1,5 @@
 // import { CheckCircleIcon } from "@heroicons/react/solid";
-import { USER_API_END_POINT } from "@/utils/constant";
+import { PAYMENT_API_END_POINT, USER_API_END_POINT } from "@/utils/constant";
 import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -16,7 +16,7 @@ const StripeSuccess = () => {
   const savePayment = async () => {
     const response = await axios({
       method: "post",
-      url: "http://localhost:3000/api/v1/payment/verify-payment",
+      url: `${PAYMENT_API_END_POINT}/verify-payment`,
       data: {
         session_id: sessionId,
       },
@@ -29,7 +29,7 @@ const StripeSuccess = () => {
       console.log("userId: ", userId);
       const updatedUser = await axios({
         method: "post",
-        url: `http://localhost:3000/api/v1/user/update/${userId}`,
+        url: `${USER_API_END_POINT}/update/${userId}`,
         data: {
           premium: true,
         },
