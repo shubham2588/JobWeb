@@ -175,3 +175,29 @@ export const updateProfile = async (req, res) => {
         console.log(error);
     }
 }
+export const updateUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const newData = req.body;
+
+        // Find existing user
+        let user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        // Merge old data with new data
+        user = Object.assign(user, newData);
+        // Save updated user
+        const updatedUser = await user.save();
+
+        return res.status(200).json(
+            { 
+                message: "User updated successfully",
+                user: updatedUser,
+                success: true 
+            });
+    } catch (error) {
+        res.status(500).json({ message: "Internal Server Error", error: error.message });
+    }
+};
