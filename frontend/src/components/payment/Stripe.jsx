@@ -35,17 +35,16 @@ const handlePayment = async (duration, pkg) => {
   console.log("pkg: ", pkg);
   console.log("duration: ", duration);
   try {
-    const response = await axios.post(
-      `${PAYMENT_API_END_POINT}/create-subscription`,
-      {
+    const response = await axios({
+      method: "post",
+      url: `${PAYMENT_API_END_POINT}/create-subscription`,
+      data: {
         plan_name: pkg,
         duration: duration,
       },
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
     if (response.data) {
       window.location.href = response.data?.session?.url;
     }
