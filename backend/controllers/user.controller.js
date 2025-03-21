@@ -118,6 +118,7 @@ export const logout = async (req, res) => {
     }
 }
 export const updateProfile = async (req, res) => {
+    console.log("updateprofile=====",req.body);
     try {
         const { fullname, email, phoneNumber, bio, skills } = req.body;
         
