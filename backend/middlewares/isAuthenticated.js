@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
 
 const isAuthenticated = async (req, res, next) => {
-    console.log('req==============: ', req);
-    console.log('req.cookies===============: ', req.cookies);
+    console.log('req.cookies.token====: ', req.cookies.token);
+    console.log('req===: ', req);
     try {
         const token = req.cookies.token;
+        console.log('token: ', token);
         if (!token) {
             return res.status(401).json({
                 message: "User not authenticated",
