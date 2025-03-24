@@ -115,7 +115,7 @@ const Login = () => {
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please wait{" "}
             </Button>
           ) : (
-            <Button type="submit" className="w-full my-4">
+            <Button type="submit" className="bg-[#800080] w-full my-4">
               Login
             </Button>
           )}
