@@ -69,7 +69,7 @@ const Navbar = () => {
                 <Button variant="outline">Login</Button>
               </Link>
               <Link to="/signup">
-                <Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">
+                <Button className="bg-[#800080] hover:bg-[#5b30a6]">
                   Signup
                 </Button>
               </Link>
@@ -110,7 +110,7 @@ const Navbar = () => {
                         </Button>
                       </div>
                     )}
-                    {user && !user.premium &&  (
+                    {user && !user.premium && (
                       <div className="flex w-fit items-center gap-2 cursor-pointer">
                         <Star />
                         <Button variant="link">
