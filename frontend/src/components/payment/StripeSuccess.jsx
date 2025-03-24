@@ -50,7 +50,7 @@ const StripeSuccess = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-md">
-        {/* <CheckCircleIcon className="w-20 h-20 text-green-500 mx-auto" /> */}
+        {/* <CheckCircleIcon className="w-20 h-20 text-blue-500 mx-auto" /> */}
         <h2 className="text-3xl font-bold text-gray-800 mt-4">
           Payment Successful!
         </h2>

@@ -52,7 +52,7 @@ const Job = ({ job }) => {
         <Badge className={"text-[#F83002] font-bold"} variant="ghost">
           {job?.jobType}
         </Badge>
-        <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
+        <Badge className={"text-[#33FF64] font-bold"} variant="ghost">
           {job?.salary}LPA
         </Badge>
       </div>
@@ -63,7 +63,7 @@ const Job = ({ job }) => {
         >
           Details
         </Button>
-        <Button className="bg-[#7209b7]">Save For Later</Button>
+        <Button className="bg-[#33FF64]">Save For Later</Button>
       </div>
     </div>
   );

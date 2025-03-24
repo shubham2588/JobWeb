@@ -76,7 +76,7 @@ const JobDescription = () => {
             <Badge className={"text-[#F83002] font-bold"} variant="ghost">
               {singleJob?.jobType}
             </Badge>
-            <Badge className={"text-[#7209b7] font-bold"} variant="ghost">
+            <Badge className={"text-[#33FF64] font-bold"} variant="ghost">
               {singleJob?.salary}LPA
             </Badge>
           </div>
@@ -87,7 +87,7 @@ const JobDescription = () => {
           className={`rounded-lg ${
             isApplied
               ? "bg-gray-600 cursor-not-allowed"
-              : "bg-[#7209b7] hover:bg-[#5f32ad]"
+              : "bg-[#33FF64] hover:bg-[#5f32ad]"
           }`}
         >
           {isApplied ? "Already Applied" : "Apply Now"}
