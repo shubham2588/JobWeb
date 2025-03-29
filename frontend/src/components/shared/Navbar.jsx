@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Button } from "../ui/button";
 import { Avatar, AvatarImage } from "../ui/avatar";
@@ -12,8 +12,16 @@ import { toast } from "sonner";
 
 const Navbar = () => {
   const { user } = useSelector((store) => store.auth);
+  const [searchQuery, setSearchQuery] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      navigate(`/search?query=${searchQuery}`);
+    }
+  };
 
   const logoutHandler = async () => {
     try {
@@ -33,12 +41,30 @@ const Navbar = () => {
   return (
     <div className="bg-white">
       <div className="flex items-center justify-between mx-auto max-w-7xl h-16">
-        <div>
+        <div className="flex items-center gap-4">
           <h1 className="text-2xl font-bold">
             Job<span className="text-[#800080]">Hunt</span>
           </h1>
+
+          {/* Search Box */}
+          <div className="relative flex items-center">
+            <input
+              type="text"
+              placeholder="Search for people or companies..."
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#800080]"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button
+              className="ml-2 px-4 py-2 bg-[#800080] text-white rounded-lg hover:bg-[#5b30a6]"
+              onClick={handleSearch}
+            >
+              Search
+            </button>
+          </div>
         </div>
-        <div className="flex items-center gap-12">
+
+        <div className="flex items-center gap-8">
           <ul className="flex font-medium items-center gap-5">
             {user && user.role === "recruiter" ? (
               <>
@@ -85,7 +111,7 @@ const Navbar = () => {
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent className="w-80">
-                <div className="">
+                <div>
                   <div className="flex gap-2 space-y-2">
                     <Avatar className="cursor-pointer">
                       <AvatarImage
@@ -105,7 +131,6 @@ const Navbar = () => {
                       <div className="flex w-fit items-center gap-2 cursor-pointer">
                         <User2 />
                         <Button variant="link">
-                          {" "}
                           <Link to="/profile">View Profile</Link>
                         </Button>
                       </div>
@@ -114,12 +139,10 @@ const Navbar = () => {
                       <div className="flex w-fit items-center gap-2 cursor-pointer">
                         <Star />
                         <Button variant="link">
-                          {" "}
                           <Link to="/premium">Try Premium</Link>
                         </Button>
                       </div>
                     )}
-
                     <div className="flex w-fit items-center gap-2 cursor-pointer">
                       <LogOut />
                       <Button onClick={logoutHandler} variant="link">

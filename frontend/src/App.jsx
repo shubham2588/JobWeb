@@ -17,6 +17,8 @@ import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import Stripe from "./components/payment/Stripe";
 import StripeSuccess from "./components/payment/StripeSuccess";
+import SearchResults from "./components/SearchResults";
+import ProfileDetail from "./components/profileDetail";
 
 const appRouter = createBrowserRouter([
   {
@@ -51,6 +53,15 @@ const appRouter = createBrowserRouter([
     path: "/premium",
     element: <Premium />,
   },
+  {
+    path: "/search", // ✅ Correct way (no query parameter in path)
+    element: <SearchResults />,
+  },
+  {
+    path: "/profile/:id",
+    element: <ProfileDetail />, // Add this route
+  },
+
   {
     path: "/premium/stripe",
     element: <Stripe />,
